@@ -2,7 +2,7 @@ Toteutus löytyy verkosta osoitteesta https://tsoha-senaatti.herokuapp.com/
 
 # Senaatti webapp
 
-Sanalla "Senaatti" tarkoitetaan keskustelevaa kokousta. Kokouksen (äänestyksen) alkuunpanija valitsee senaatin jäsenet tai vaihtoehtoisesti jättää äänestykseen osallistumisen avoimeksi. Mahdollisia ääniä ovat 👍 , 👎 ja 🤞 (*neutraali* ääni).
+Sanalla "Senaatti" tarkoitetaan keskustelevaa kokousta. Kokouksen (äänestyksen) alkuunpanija valitsee senaatin jäsenet tai vaihtoehtoisesti jättää äänestykseen osallistumisen avoimeksi. Mahdollisia ääniä ovat 👍 , 👎 tai 🤞 (*neutraali* ääni).
 
 ## Ominaisuudet
 
