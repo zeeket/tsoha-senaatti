@@ -1,12 +1,12 @@
+Toteutus löytyy verkosta osoitteesta https://tsoha-senaatti.herokuapp.com/
+
 # Senaatti webapp
 
-Sanalla "Senaatti" tarkoitetaan keskustelevaa kokousta. Kokouksen (äänestyksen) alkuunpanija valitsee senaatin jäsenet tai vaihtoehtoisesti jättää äänestykseen osallistumisen avoimeksi (jolloin kyseessä on *massakokous*). Mahdollisia ääniä ovat "👍" , "👎" ja "🤞" (*neutraali* ääni).
+Sanalla "Senaatti" tarkoitetaan keskustelevaa kokousta. Kokouksen (äänestyksen) alkuunpanija valitsee senaatin jäsenet tai vaihtoehtoisesti jättää äänestykseen osallistumisen avoimeksi. Mahdollisia ääniä ovat 👍 , 👎 ja 🤞 (*neutraali* ääni).
 
 ## Ominaisuudet
 
 Käyttäjä voi lukea järjestelmään tallennettuja avoimia senaatteja, sekä niitä senaatteja joissa hän on itse jäsen. Senaatti on aktiivinen kunnes kaikki sen jäsenet ovat äänestäneet, tai avoimissa senaateissa kunnes senaatin alkuunpanijan valitsema määrä ääniä on tallennettu. Kun senaatti ei ole enään aktiivinen, se arkistoidaan jolloin siitä ei voi enään keskustella, eikä sen lopputulokseen osallistua taikka vaikuttaa.
-
-'''
 
 ## Toimintoja
 
