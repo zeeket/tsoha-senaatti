@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>poll</th>
+      <th>Done</th>
+    </tr>
+    {% for poll in polls %}
+    <tr>
+      <td>{{ poll.name }}</td>
+      <td>{{ poll.done }}</td>
+      <td>
+	<form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
+	  <input type="submit" value="Change status!"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

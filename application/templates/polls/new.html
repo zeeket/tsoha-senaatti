@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('polls_create') }}">
+  <input type="text" name="name"/>
+  <input type="submit" value="Form a new senaatti"/>
+</form>
+{% endblock %}
