@@ -1,8 +1,34 @@
 {% extends "layout.html" %}
-  
+
 {% block body %}
 <form method="POST" action="{{ url_for('polls_create') }}">
-  <input type="text" name="name"/>
-  <input type="submit" value="Form a new senaatti"/>
+    <table>
+
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                {{ form.description.label }}
+            </td>
+            <td>
+                {{ form.description }}
+            </td>
+        </tr>
+
+
+               <tr>
+            <td colspan="2">
+                <input type="submit" value="Muodosta uusi senaatti"/>
+            </td>
+        </tr>
+    </table>
 </form>
+<p> Tähdellä (*) merkityt kentät ovat pakollisia </p>
 {% endblock %}
