@@ -12,6 +12,8 @@ class Poll(db.Model):
     downvotes = db.Column(db.Integer, nullable=False)
     neutralvotes = db.Column(db.Integer, nullable=False)
     done = db.Column(db.Boolean, nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+                           nullable=False)
 
     def __init__(self, name, description):
         self.name = name
