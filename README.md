@@ -10,14 +10,16 @@ Käyttäjä voi lukea järjestelmään tallennettuja avoimia senaatteja, sekä n
 
 ## Toimintoja
 
-* Kirjautuminen
-* Senaatin alkuunpano, otsikon valinta, osallistujien valinta
-* Senaattien näyttäminen eri kriteerein
-* Aktiivisessa senaatissa äänestäminen
-* Aktiivisessa senaatissa keskustelu
-* Senaatin poistaminen
-* Arkistoidun senaatin lopputuloksen katselmointi
+* Kirjautuminen & uuden käyttäjän rekisteröinti
+⋅⋅* Testitunnukset herokussa ovat testitunnus:testisalasana (muodossa käyttäjänimi:salasana)
+* Senaatin alkuunpano, otsikon valinta, osallistujien valinta (1/3 TODO)
+* Senaattien näyttäminen eri kriteerein (TODO)
+* Aktiivisessa senaatissa äänestäminen (TODO)
+* Aktiivisessa senaatissa keskustelu (TODO)
+* Senaatin poistaminen (TODO)
+* Arkistoidun senaatin lopputuloksen katselmointi (TODO)
 
 ## Tietokanta
 
 Käytössä on relaatiotietokanta. [Tietokantakaavio löytyy täältä](documentation/database_uml.png)
+Salasanoja **ei** pidetä selkokielellä tietokannassa- käytössä on [argon2-hajautusfunktio](https://en.wikipedia.org/wiki/Argon2).
