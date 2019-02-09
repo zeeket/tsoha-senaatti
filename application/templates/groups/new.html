@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('polls_create') }}">
+    <table>
+
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+	<td>
+	  <ul>
+	    {% for error in form.name.errors %}
+	    <li>{{ error }}</li>
+	    {% endfor %}
+	  </ul>
+	</td>
+        </tr>
+
+        <tr>
+            <td>
+                {{ form.description.label }}
+            </td>
+            <td>
+                {{ form.description }}
+            </td>
+        </tr>
+
+
+               <tr>
+            <td colspan="2">
+                <input type="submit" value="Muodosta uusi senaatti"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<p> Tähdellä (*) merkityt kentät ovat pakollisia </p>
+{% endblock %}
