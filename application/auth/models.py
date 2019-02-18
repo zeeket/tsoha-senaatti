@@ -7,7 +7,7 @@ class User(Base):
     __tablename__ = "account"
     username = db.Column(db.String(144), nullable=False)
     passwordhash = db.Column(db.String(144), nullable=False)
-
+    role = db.Column(db.String(144))
     polls = db.relationship("Poll", backref='account', lazy=True)
 
     def __init__(self, username, password):
@@ -26,3 +26,5 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+    def roles(self):
+        return this.role

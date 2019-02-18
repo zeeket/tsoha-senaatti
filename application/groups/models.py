@@ -1,5 +1,8 @@
 from application import db
 from application.models import Base
+from sqlalchemy import Column, Integer, String, Table, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
 class Group(Base):
     __tablename__ = 'group'
@@ -9,10 +12,11 @@ class Group(Base):
     group_users = relationship("Group_user", cascade="save-update, merge, delete")
 
     def __init__(self, name):
-        #t√m√§konstruktori tulee joskus ehk√ saamaan ryhm√n j√senet listana
+        #t√§m√§konstruktori tulee joskus e√§ saamaan ryh√§n √§senet listana
         self.name = name
 
-group_accounts = Table('group_accounts', Base.metadata,
-                        Column('group_id', Integer, ForeignKey('group.id')),
-                        Column('account_id', Integer, ForeignKey('account.id'))
-                      )
+class GroupAccountLink(Base):
+    __tablename__ = 'group_account_link'
+    group_id= db.Column(db.Integer, db.ForeignKey('group.id')),
+    account_id= db.Column(db.Integer, db.ForeignKey('account.id'))
+

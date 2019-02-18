@@ -1,41 +1,47 @@
 {% extends "layout.html" %}
-
 {% block body %}
-<form method="POST" action="{{ url_for('polls_create') }}">
+{error}
+<form method="POST" action="{{ url_for('groups_create') }}">
+
+    <p>Muodosta uusi ryhmä</p>
+    </br>
     <table>
-
         <tr>
             <td>
-                {{ form.name.label }}
+                {{ form.userselect.label }}
             </td>
             <td>
-                {{ form.name }}
+                {{ form.userselect }}
             </td>
-	<td>
-	  <ul>
-	    {% for error in form.name.errors %}
-	    <li>{{ error }}</li>
-	    {% endfor %}
-	  </ul>
-	</td>
+            <td>
+                <ul>
+                    {% for error in form.userselect.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
         </tr>
-
         <tr>
             <td>
-                {{ form.description.label }}
+                {{ form.groupname.label }}
             </td>
             <td>
-                {{ form.description }}
+                {{ form.groupname }}
             </td>
+            <td>
+                <ul>
+                    {% for error in form.groupname.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+
+
         </tr>
-
-
-               <tr>
+        <tr>
             <td colspan="2">
-                <input type="submit" value="Muodosta uusi senaatti"/>
-            </td>
-        </tr>
-    </table>
+ 
+
+<input type="submit" value="Muodosta uusi ryhmä"/>
 </form>
-<p> Tähdellä (*) merkityt kentät ovat pakollisia </p>
 {% endblock %}
