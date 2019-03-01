@@ -12,15 +12,15 @@
 </div>
 
 <form method="POST" action="{{ url_for('polls_set_upvote', poll_id=poll.id) }}">
-    <input class="btn btn-success" type="submit" value="Up">
+    <input class="btn btn-success" type="submit" value="Up 👍">
 </form>
 
 <form method="POST" action="{{ url_for('polls_set_neutralvote', poll_id=poll.id) }}">
-    <input class="btn btn-primary" type="submit" value="Neutral">
+    <input class="btn btn-primary" type="submit" value="Neutral 🤞">
 </form>
 
 <form method="POST" action="{{ url_for('polls_set_downvote', poll_id=poll.id) }}">
-    <input class="btn btn-danger" type="submit" value="Down">
+    <input class="btn btn-danger" type="submit" value="Down 👎">
 </form>
 
 <p>Senaatti arkistoitu:{{ poll.done }}</p>     	
