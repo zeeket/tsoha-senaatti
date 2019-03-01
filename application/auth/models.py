@@ -10,6 +10,7 @@ class User(Base):
     role = db.Column(db.String(144), nullable=False)
     polls = db.relationship("Poll", backref='account', lazy=True)
     groups = relationship('Group', secondary = 'group_account_link')
+    votes = relationship("Poll", secondary = 'poll_account_link')
 
     def __init__(self, username, password):
         self.username = username

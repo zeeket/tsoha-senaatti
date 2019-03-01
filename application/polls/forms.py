@@ -7,9 +7,10 @@ class PollForm(FlaskForm):
 
     class Meta:
         csrf = False
-
+"""
 class SinglePollForm(FlaskForm):
     upvote = SubmitField()
     neutralvote = SubmitField()
     downvote = SubmitField()
+"""
 

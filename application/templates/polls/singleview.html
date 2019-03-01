@@ -7,11 +7,22 @@
         <h1 class="display-4">{{ poll.name }}</h1>
         <p class="lead">{{ poll.description }}</p>
         <hr class="my-4">
-        <p>Luonut:{{ poll.get_creator_name }}</p>
+        <p>Luonut:{{ get_creator_name() }}</p>
     </div>
 </div>
-<a class="btn btn-primary" href="#" role="button">Link</a>
-<button type="button" class="btn btn-danger">Danger</button>
+
+<form method="POST" action="{{ url_for('polls_set_upvote', poll_id=poll.id) }}">
+    <input class="btn btn-success" type="submit" value="Up">
+</form>
+
+<form method="POST" action="{{ url_for('polls_set_neutralvote', poll_id=poll.id) }}">
+    <input class="btn btn-primary" type="submit" value="Neutral">
+</form>
+
+<form method="POST" action="{{ url_for('polls_set_downvote', poll_id=poll.id) }}">
+    <input class="btn btn-danger" type="submit" value="Down">
+</form>
+
 <p>Senaatti arkistoitu:{{ poll.done }}</p>     	
 <form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
     <input type="submit" value="Arkistoi!"/>

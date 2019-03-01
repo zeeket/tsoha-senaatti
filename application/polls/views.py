@@ -23,26 +23,6 @@ def polls_set_done(poll_id):
 
     return redirect(url_for("polls_index"))
 
-@app.route("/polls/<poll_id>", methods=["GET"])
-@login_required
-def poll_show_single(poll_id):
-
-    p = Poll.query.get(poll_id)
-
-    return render_template("polls/singleview.html", poll = p)
-
-@app.route("/polls/<poll_id>/voteup", methods=["POST"])
-@login_required
-def polls_vote_up(poll_id):
-
-    p = Poll.query.get(poll_id)
-    p.upvotes+=1
-    db.session().commit()
-
-    return request.referrer
-
-
-
 @app.route("/polls/", methods=["POST"])
 @login_required
 def polls_create():
@@ -60,40 +40,42 @@ def polls_create():
     return redirect(url_for("polls_index"))
 
 @app.route("/polls/<poll_id>/", methods=["POST", "GET"])
-def polls_singleview(poll_id):
+def polls_show_single(poll_id):
     p = Poll.query.get(poll_id)
-    return render_template("polls/singleview.html", poll=p,
-                           form = SinglePollForm())
+    return render_template("polls/singleview.html", get_creator_name = p.get_creator_name,poll=p)
 
 @app.route("/polls/<poll_id>/up", methods=["POST"])
 @login_required
 def polls_set_upvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user):
         p.upvotes+=1
+        p.votes.append(current_user)
         db.session().commit()
 
-    return redirect(url_for("polls_singleview"))
+    return redirect(url_for("polls_show_single"))
 
 @app.route("/polls/<poll_id>/neutral", methods=["POST"])
 @login_required
 def polls_set_neutralvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user):
         p.neutralvotes+=1
+        p.votes.append(current_user)
         db.session().commit()
 
-    return redirect(url_for("polls_singleview"))
+    return redirect(url_for("polls_show_single"))
 
 @app.route("/polls/<poll_id>/down", methods=["POST"])
 @login_required
 def polls_set_downvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user):
         p.downvotes+=1
+        p.votes.append(current_user)
         db.session().commit()
 
-    return redirect(url_for("polls_singleview"))
+    return redirect(url_for("polls_show_single"))

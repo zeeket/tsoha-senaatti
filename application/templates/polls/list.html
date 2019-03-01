@@ -9,7 +9,7 @@
     </tr>
     {% for poll in polls %}
     <tr>
-        <td><a href="{{ url_for('poll_show_single', poll_id=poll.id }}">{{ poll.name }}</a></td>
+        <td><a href="{{ url_for('polls_show_single', poll_id=poll.id) }}">{{ poll.name }}</a></td>
 <td>{{ poll.description }}</td>
 
       <td>{{ poll.done }}</td>
