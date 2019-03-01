@@ -40,6 +40,11 @@ from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
 
+#ryhmien toiminallisuus
+#kansiosta application, alikansiosta groups tiedostot models&views
+from application.groups import models
+from application.groups import views
+
 from flask_login import LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)

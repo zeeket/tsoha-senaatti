@@ -1,13 +1,17 @@
 from application import db, argon2
 from application.models import Base
 
+<<<<<<< HEAD
 class User(Base):
 
     __tablename__ = "account"
   
+=======
+
 class User(Base):
 
     __tablename__ = "account"
+>>>>>>> 0fa20f8c04a7678da416e07e127b5688c8fd1f71
     username = db.Column(db.String(144), nullable=False)
     passwordhash = db.Column(db.String(144), nullable=False)
     role = db.Column(db.String(144))

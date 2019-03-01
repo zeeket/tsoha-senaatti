@@ -13,7 +13,11 @@ def polls_index():
 def polls_form():
     return render_template("polls/new.html", form = PollForm())
 
+<<<<<<< HEAD
 @app.route("/polls/<poll_id>/setdone", methods=["POST"])
+=======
+@app.route("/polls/<poll_id>/done/", methods=["POST"])
+>>>>>>> 0fa20f8c04a7678da416e07e127b5688c8fd1f71
 @login_required
 def polls_set_done(poll_id):
 
@@ -97,3 +101,5 @@ def polls_set_downvote(poll_id):
         db.session().commit()
 
     return redirect(url_for("polls_singleview"))
+
+

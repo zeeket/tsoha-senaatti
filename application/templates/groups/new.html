@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+{error}
+<form method="POST" action="{{ url_for('groups_create') }}">
+
+    <p>Muodosta uusi ryhmä</p>
+    </br>
+    <table>
+        <tr>
+            <td>
+                {{ form.userselect.label }}
+            </td>
+            <td>
+                {{ form.userselect }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.userselect.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.groupname.label }}
+            </td>
+            <td>
+                {{ form.groupname }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.groupname.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2">
+ 
+
+<input type="submit" value="Muodosta uusi ryhmä"/>
+</form>
+{% endblock %}
