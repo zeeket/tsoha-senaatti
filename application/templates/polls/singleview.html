@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ poll.name }}</h1>
+        <p class="lead">{{ poll.description }}</p>
+        <hr class="my-4">
+        <p>Luonut:{{ poll.get_creator_name }}</p>
+    </div>
+</div>
+<a class="btn btn-primary" href="#" role="button">Link</a>
+<button type="button" class="btn btn-danger">Danger</button>
+<p>Senaatti arkistoitu:{{ poll.done }}</p>     	
+<form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
+    <input type="submit" value="Arkistoi!"/>
+</form>
+{% endblock %}

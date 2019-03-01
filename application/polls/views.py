@@ -13,7 +13,7 @@ def polls_index():
 def polls_form():
     return render_template("polls/new.html", form = PollForm())
 
-@app.route("/polls/<poll_id>/", methods=["POST"])
+@app.route("/polls/<poll_id>/setdone", methods=["POST"])
 @login_required
 def polls_set_done(poll_id):
 
@@ -22,6 +22,26 @@ def polls_set_done(poll_id):
     db.session().commit()
 
     return redirect(url_for("polls_index"))
+
+@app.route("/polls/<poll_id>", methods=["GET"])
+@login_required
+def poll_show_single(poll_id):
+
+    p = Poll.query.get(poll_id)
+
+    return render_template("polls/singleview.html", poll = p)
+
+@app.route("/polls/<poll_id>/voteup", methods=["POST"])
+@login_required
+def polls_vote_up(poll_id):
+
+    p = Poll.query.get(poll_id)
+    p.upvotes+=1
+    db.session().commit()
+
+    return request.referrer
+
+
 
 @app.route("/polls/", methods=["POST"])
 @login_required

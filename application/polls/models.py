@@ -1,11 +1,7 @@
 from application import db
+from application.models import Base
 
-class Poll(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-    onupdate=db.func.current_timestamp())
-
+class Poll(Base):
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(280))
     upvotes = db.Column(db.Integer, nullable=False)
@@ -25,3 +21,11 @@ class Poll(db.Model):
         self.downvotes = 0
         self.neutralvotes = 0
         self.done = False
+
+
+    def get_creator_name(self):
+            stmt = text("SELECT account.username FROM account"
+                    "WHERE (:pollaccid = account.id)").params(pollaccid=self.account_id)
+            res = db.engine.execute(stmt)
+
+            return res
