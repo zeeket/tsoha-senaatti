@@ -49,33 +49,33 @@ def polls_show_single(poll_id):
 def polls_set_upvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and not p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user.id):
         p.upvotes+=1
         p.votes.append(current_user)
         db.session().commit()
 
-    return redirect(url_for("polls_show_single"))
+    return redirect(url_for("polls_show_single", poll_id=p.id))
 
 @app.route("/polls/<poll_id>/neutral", methods=["POST"])
 @login_required
 def polls_set_neutralvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and not p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user.id):
         p.neutralvotes+=1
         p.votes.append(current_user)
         db.session().commit()
 
-    return redirect(url_for("polls_show_single"))
+    return redirect(url_for("polls_show_single", poll_id=p.id))
 
 @app.route("/polls/<poll_id>/down", methods=["POST"])
 @login_required
 def polls_set_downvote(poll_id):
 
     p = Poll.query.get(poll_id)
-    if not p.account_id == current_user.id and not p.has_voted(current_user):
+    if not p.account_id == current_user.id and not p.has_voted(current_user.id):
         p.downvotes+=1
-        p.votes.append(current_user)
+        p.votes.append(current_user.id)
         db.session().commit()
 
-    return redirect(url_for("polls_show_single"))
+    return redirect(url_for("polls_show_single",poll_id=p.id))

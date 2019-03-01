@@ -42,13 +42,11 @@ class Poll(Base):
                 "WHERE (poll_account_link.userid = :queryuserid AND poll_account_link.pollid = :querypollid)")
         res = db.engine.execute(stmt,queryuserid=userid,querypollid=self.id)
         if res.fetchone():
-            return true
-        return false
+            return True
+        return False
 
 class Vote(Base):
     __tablename__ = "poll_account_link"
     
-    userid = db.Column(db.Integer, db.ForeignKey('account.id'),
-            primary_key=True)
-    pollid = db.Column(db.Integer, db.ForeignKey('poll.id'),
-            primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey('account.id'))
+    pollid = db.Column(db.Integer, db.ForeignKey('poll.id'))

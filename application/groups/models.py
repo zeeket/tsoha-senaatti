@@ -21,6 +21,6 @@ class Group(Base):
 
 class GroupAccountLink(Base):
     __tablename__ = 'group_account_link'
-    group_id= db.Column(db.Integer, db.ForeignKey('group.id'),primary_key=True)
-    account_id= db.Column(db.Integer, db.ForeignKey('account.id'),primary_key=True)
+    group_id= db.Column(db.Integer, db.ForeignKey('group.id'))
+    account_id= db.Column(db.Integer, db.ForeignKey('account.id'))
 
