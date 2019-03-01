@@ -25,8 +25,18 @@
 
 <p>Senaatti arkistoitu:{{ poll.done }}</p>     	
 {% if current_user.id == poll.account_id %}
-<p>Olet luonut tämän senaatin</p>
+<p>Olet luonut tämän senaatin.</p>
+{% if userswhovoted is defined %}
+<p>Seuraavat käyttäjät ovat äänestäneet tässä senaatissa:</p>
+<ul>
+  {% for user in userswhovoted %}
+  <li>
+    {{user.id}} {{user.name}}
+  </li>
+  {% endfor %}
+</ul>
 
+{% endif %}
 <form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
     <input type="submit" value="Arkistoi!"/>
 </form>

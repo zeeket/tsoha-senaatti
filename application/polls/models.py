@@ -45,8 +45,22 @@ class Poll(Base):
             return True
         return False
 
+
+    def find_users_who_voted(self):
+        stmt = text("SELECT account.id, account.username FROM account"
+                    " INNER JOIN poll_account_link ON poll_account_link.userid = account.id "
+                    "WHERE poll_account_link.pollid = :querypollid")
+        result = db.engine.execute(stmt,querypollid=self.id)
+        response = []
+        for row in result:
+            response.append({"id":row[0], "name":row[1]})
+        
+        return response
+
 class Vote(Base):
     __tablename__ = "poll_account_link"
     
     userid = db.Column(db.Integer, db.ForeignKey('account.id'))
     pollid = db.Column(db.Integer, db.ForeignKey('poll.id'))
+
+
