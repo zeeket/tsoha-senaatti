@@ -24,7 +24,15 @@
 </form>
 
 <p>Senaatti arkistoitu:{{ poll.done }}</p>     	
+{% if current_user.id == poll.account_id %}
+<p>Olet luonut tämän senaatin</p>
+
 <form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
     <input type="submit" value="Arkistoi!"/>
 </form>
+<form method="POST" action="{{ url_for('polls_delete', poll_id=poll.id) }}">
+    <input type="submit" value="Poista senaatti!"/>
+</form>
+{% endif %}
+<form
 {% endblock %}

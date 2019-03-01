@@ -79,3 +79,16 @@ def polls_set_downvote(poll_id):
         db.session().commit()
 
     return redirect(url_for("polls_show_single",poll_id=p.id))
+
+@app.route("/polls/<poll_id>/delete", methods=["POST"])
+@login_required
+def polls_delete(poll_id):
+
+    p = Poll.query.get(poll_id)
+    if p.account_id != current_user.id:
+        return login_manager.unauthorized
+
+    db.session.delete(p)
+    db.session.commit()
+
+    return redirect(url_for("polls_index"))
