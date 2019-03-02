@@ -5,20 +5,13 @@
     <tr>
       <th>Nimi</th>
       <th>Kuvaus</th>
-      <th>Arkistoitu</th>
     </tr>
     {% for poll in polls %}
     <tr>
         <td><a href="{{ url_for('polls_show_single', poll_id=poll.id) }}">{{ poll.name }}</a></td>
 <td>{{ poll.description }}</td>
 
-      <td>{{ poll.done }}</td>
-      <td>
-	<form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
-	  <input type="submit" value="Arkistoi!"/>
-        </form>
-      </td>
-    </tr>
+   </tr>
     {% endfor %}
   </table>
 {% endblock %}

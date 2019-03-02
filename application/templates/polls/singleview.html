@@ -36,6 +36,19 @@
   {% endfor %}
 </ul>
 
+<p>Tämänhetkinen senaatin tulos:</p>
+<table>
+    <tr>
+    <th> 👍 </th>
+    <th> 🤞 </th>
+    <th> 👎 </th>
+    </tr>
+    <tr>
+        <td> {{ poll.upvotes }} </td>
+        <td> {{ poll.neutralvotes}} </td>
+        <td> {{ poll.downvotes}} </td>
+    </tr>
+</table>
 {% endif %}
 <form method="POST" action="{{ url_for('polls_set_done', poll_id=poll.id) }}">
     <input type="submit" value="Arkistoi!"/>
