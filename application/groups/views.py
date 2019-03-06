@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
+from application.auth.models import User
 from application.groups.models import Group
 from application.groups.forms import GroupForm
 

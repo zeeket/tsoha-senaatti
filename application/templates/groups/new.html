@@ -8,14 +8,14 @@
     <table>
         <tr>
             <td>
-                {{ form.userselect.label }}
+                {{ form.group_users_select.label }}
             </td>
             <td>
-                {{ form.userselect }}
+                {{ form.group_users_select }}
             </td>
             <td>
                 <ul>
-                    {% for error in form.userselect.errors %}
+                    {% for error in form.group_users_select.errors %}
                     <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
@@ -23,14 +23,14 @@
         </tr>
         <tr>
             <td>
-                {{ form.groupname.label }}
+                {{ form.name.label }}
             </td>
             <td>
-                {{ form.groupname }}
+                {{ form.name }}
             </td>
             <td>
                 <ul>
-                    {% for error in form.groupname.errors %}
+                    {% for error in form.name.errors %}
                     <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
